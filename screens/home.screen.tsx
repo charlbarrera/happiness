@@ -1,71 +1,108 @@
 // MotivationVisualizer.tsx
 
-import {ScrollView, View} from "react-native";
-import MotivationVisualizer from "./motivationVisualizer";
-import { Box, Text, FlatList, Input, Button, VStack, HStack } from "native-base";
-import {useState} from "react";
+import { ScrollView } from "react-native";
+import { useState } from "react";
+import { Layout, Text, List, Input, Button, Card } from "@ui-kitten/components";
+import SpaceStain from "../components/SpaceStain";
+import { saveMood } from "../services/firebase";
+
+const MOODS = ["Good", "Neutral", "Bad"] as const;
 
 export const HomeScreen = () => {
-    const [feedback, setFeedback] = useState('');
+  const [feedback, setFeedback] = useState("");
 
-    return (
-        <ScrollView>
-            <VStack space={5} p={4}>
+  const renderTaskItem = (info: any) => (
+    <Card
+      style={{
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#f0f0f0",
+      }}
+    >
+      <Text>{info.item}</Text>
+    </Card>
+  );
 
-                {/* 1. Upcoming Tasks */}
-                <Box>
-                    <Text fontSize="xl" fontWeight="bold">Upcoming Tasks:</Text>
-                    <FlatList
-                        data={['Task 1', 'Task 2']} // replace with your data
-                        renderItem={({ item }) => (
-                            <Text p={2} borderBottomWidth={1} borderBottomColor="coolGray.200">
-                                {item}
-                            </Text>
-                        )}
-                    />
-                </Box>
+  const handleCheckInMood = (mood: string) => {
+    /**
+     * send it to firebase throw sdk
+     */
 
-                {/* 2. Mood & Energy Check-in */}
-                <Box>
-                    <Text fontSize="xl" fontWeight="bold">Mood & Energy Check-in:</Text>
-                    <HStack space={2} mt={2}>
-                        <Button onPress={() => {}}>Good</Button>
-                        <Button onPress={() => {}}>Neutral</Button>
-                        <Button onPress={() => {}}>Bad</Button>
-                    </HStack>
-                </Box>
+    try {
+      saveMood(mood);
+    } catch (error) {}
+  };
 
-                {/* 3. Feedback Prompt */}
-                <Box>
-                    <Text fontSize="xl" fontWeight="bold">Feedback Prompt:</Text>
-                    <Input
-                        mt={2}
-                        value={feedback}
-                        onChangeText={(value) => setFeedback(value)}
-                        placeholder="What did you learn today?"
-                    />
-                </Box>
+  return (
+    <>
+      <ScrollView
+        // ocupy the whole width
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Layout style={{ flex: 1, padding: 10 }}>
+          {/* 1. Upcoming Tasks */}
+          <Text category="h5">Upcoming Tasks:</Text>
+          <List
+            data={["Task 1", "Task 2", "Task 3", "Task 4", "Task 6"]}
+            renderItem={renderTaskItem}
+          />
 
-                {/* 4. Motivation Visualizer */}
-                <Box>
-                    <Text fontSize="xl" fontWeight="bold">Motivation Visualizer:</Text>
-                    {/* Insert the motivation visualizer component/code here */}
-                </Box>
+          {/* 2. Mood & Energy Check-in */}
+          <Text category="h5">Mood & Energy Check-in:</Text>
+          <Layout
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: 10,
+            }}
+          >
+            {
+              /**
+               * loop thwrout the mood and energy
+               */
+              MOODS.map((mood) => {
+                return (
+                  <Button
+                    key={mood}
+                    status="basic"
+                    onPress={() => handleCheckInMood(mood)}
+                  >
+                    {mood}
+                  </Button>
+                );
+              })
+            }
+          </Layout>
 
-                {/* 5. Notifications Panel */}
-                <Box>
-                    <Text fontSize="xl" fontWeight="bold">Notifications:</Text>
-                    <FlatList
-                        mt={2}
-                        data={['Reminder 1', 'Reminder 2']} // replace with your data
-                        renderItem={({ item }) => (
-                            <Text p={2} borderBottomWidth={1} borderBottomColor="coolGray.200">
-                                {item}
-                            </Text>
-                        )}
-                    />
-                </Box>
-            </VStack>
-        </ScrollView>
-    );
+          {/* 3. Feedback Prompt */}
+          <Text category="h5" style={{ marginTop: 20 }}>
+            Feedback Prompt:
+          </Text>
+          <Input
+            style={{ marginTop: 10 }}
+            value={feedback}
+            onChangeText={setFeedback}
+            placeholder="What did you learn today?"
+          />
+
+          {/* 4. Motivation Visualizer */}
+          <Text category="h5" style={{ marginTop: 20 }}>
+            Motivation Visualizer:
+          </Text>
+          {/* Insert the motivation visualizer component/code here */}
+
+          {/* 5. Notifications Panel */}
+          <Text category="h5" style={{ marginTop: 20 }}>
+            Notifications:
+          </Text>
+          <List
+            style={{ marginTop: 10 }}
+            data={["Reminder 1", "Reminder 2", "Reminder 3", "Reminder 4"]}
+            renderItem={renderTaskItem}
+          />
+        </Layout>
+      </ScrollView>
+      <SpaceStain />
+    </>
+  );
 };
