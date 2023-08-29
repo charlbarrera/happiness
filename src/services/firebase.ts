@@ -3,18 +3,17 @@
  * initialize firebase and create a method to save in a collection called mood a state
  */
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { firebase } from "@react-native-firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDCdp0LA76_uIuHLl7RgXYUPNeX2Gux0ww",
-    authDomain: "centralmark-71e35.firebaseapp.com",
-    projectId: "centralmark-71e35",
-    storageBucket: "centralmark-71e35.appspot.com",
-    messagingSenderId: "666990596841",
-    appId: "1:666990596841:web:471b79aa76161c7b5f9678",
-    measurementId: "G-2N3YDXTC68"
-}
+  apiKey: "AIzaSyDCdp0LA76_uIuHLl7RgXYUPNeX2Gux0ww",
+  authDomain: "centralmark-71e35.firebaseapp.com",
+  projectId: "centralmark-71e35",
+  storageBucket: "centralmark-71e35.appspot.com",
+  messagingSenderId: "666990596841",
+  appId: "1:666990596841:web:471b79aa76161c7b5f9678",
+  measurementId: "G-2N3YDXTC68",
+};
 
 
 if (!firebase.apps.length) {
