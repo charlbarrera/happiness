@@ -2,7 +2,7 @@
 
 import { ScrollView } from "react-native";
 import { useState } from "react";
-import { Layout, Text, List, Input, Button, Card } from "@ui-kitten/components";
+import { Button, Card, Input, Layout, List, Text } from "@ui-kitten/components";
 import SpaceStain from "../components/SpaceStain";
 
 const MOODS = ["Good", "Neutral", "Bad"] as const;
