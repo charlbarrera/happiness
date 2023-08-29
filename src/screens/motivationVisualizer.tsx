@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { SkillNode, SkillsGraph } from "../types/skill.types";
-import { initialSkills } from "../data";
 import { StyleSheet, Button, Text, View, PanResponder } from "react-native";
 import { Circle, Line, Svg } from "react-native-svg";
+import { SkillNode, SkillsGraph } from "../../types/skill.types";
+import {initialSkills} from "../../data";
 
 const getSkillById = (id: number, skills: SkillsGraph) => {
   return skills.nodes.find((skill) => skill.id === id);
@@ -69,8 +69,8 @@ const MotivationVisualizer: React.FC = () => {
     }));
   };
 
-  const maxX = Math.max(...skills.nodes.map((node) => node.x)) + 50; // +50 for some padding
-  const maxY = Math.max(...skills.nodes.map((node) => node.y)) + 50; // +50 for
+  //const maxX = Math.max(...skills.nodes.map((node) => node.x)) + 50; // +50 for some padding
+  //const maxY = Math.max(...skills.nodes.map((node) => node.y)) + 50; // +50 for
 
   return (
     <View style={styles.container}>

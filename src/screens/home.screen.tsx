@@ -4,7 +4,6 @@ import { ScrollView } from "react-native";
 import { useState } from "react";
 import { Layout, Text, List, Input, Button, Card } from "@ui-kitten/components";
 import SpaceStain from "../components/SpaceStain";
-import { saveMood } from "../services/firebase";
 
 const MOODS = ["Good", "Neutral", "Bad"] as const;
 
@@ -28,15 +27,15 @@ export const HomeScreen = () => {
      * send it to firebase throw sdk
      */
 
-    try {
+    /* try {
       saveMood(mood);
-    } catch (error) {}
+    } catch (error) {}*/
   };
 
   return (
     <>
       <ScrollView
-        // ocupy the whole width
+        // occupy the whole width
         contentContainerStyle={{ flexGrow: 1 }}
       >
         <Layout style={{ flex: 1, padding: 10 }}>

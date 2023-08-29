@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
-import { HomeScreen } from "./screens/home.screen";
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider } from "@ui-kitten/components";
+import { HomeScreen } from "./src/screens/home.screen";
 
 export default function App() {
     return (

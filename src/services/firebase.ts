@@ -7,12 +7,13 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB-5X6X6Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3",
-    authDomain: "mood-1a2b3.firebaseapp.com",
-    projectId: "mood-1a2b3",
-    storageBucket: "mood-1a2b3.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:123456789"
+    apiKey: "AIzaSyDCdp0LA76_uIuHLl7RgXYUPNeX2Gux0ww",
+    authDomain: "centralmark-71e35.firebaseapp.com",
+    projectId: "centralmark-71e35",
+    storageBucket: "centralmark-71e35.appspot.com",
+    messagingSenderId: "666990596841",
+    appId: "1:666990596841:web:471b79aa76161c7b5f9678",
+    measurementId: "G-2N3YDXTC68"
 }
 
 
