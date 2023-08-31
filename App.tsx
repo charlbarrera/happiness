@@ -5,13 +5,15 @@ import { ApplicationProvider } from "@ui-kitten/components";
 import { HomeScreen } from "./src/screens/home.screen";
 
 export default function App() {
-    return (
+  return (
+    <SafeAreaView>
       <ApplicationProvider {...eva} theme={eva.light}>
-        <View>
+        <View className="flex-auto">
           <StatusBar style="auto" />
           <HomeScreen />
         </View>
       </ApplicationProvider>
-    );
+    </SafeAreaView>
+  );
 }
 
